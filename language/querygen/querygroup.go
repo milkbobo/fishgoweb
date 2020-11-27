@@ -1,7 +1,7 @@
 package main
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"go/types"
 	"html/template"
 	"strings"
@@ -144,6 +144,6 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	registerQueryGen("github.com/fishedee/language.QueryGroup", QueryGroupGen)
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryGroup", QueryGroupGen)
 	hasQueryGroupGenerate = map[string]bool{}
 }

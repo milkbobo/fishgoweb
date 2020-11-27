@@ -1,7 +1,7 @@
 package main
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"html/template"
 )
 
@@ -94,6 +94,6 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	registerQueryGen("github.com/fishedee/language.QueryCombine", QueryCombineGen)
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryCombine", QueryCombineGen)
 	hasQueryCombineGenerate = map[string]bool{}
 }

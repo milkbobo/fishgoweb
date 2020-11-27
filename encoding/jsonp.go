@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"strings"
 )
 

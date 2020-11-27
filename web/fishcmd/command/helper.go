@@ -1,7 +1,7 @@
 package command
 
 import (
-	"github.com/fishedee/web/fishcmd/modules"
+	"github.com/milkbobo/fishgoweb/web/fishcmd/modules"
 	"strings"
 )
 

@@ -2,7 +2,7 @@ package web
 
 import (
 	"fmt"
-	. "github.com/fishedee/util"
+	. "github.com/milkbobo/fishgoweb/util"
 	"reflect"
 	"strings"
 	"time"

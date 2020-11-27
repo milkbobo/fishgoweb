@@ -3,7 +3,7 @@ package util
 import (
 	"compress/flate"
 	"compress/gzip"
-	. "github.com/fishedee/assert"
+	. "github.com/milkbobo/fishgoweb/assert"
 	"net/http"
 	"net/http/httptest"
 	"strings"

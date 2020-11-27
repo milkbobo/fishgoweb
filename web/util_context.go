@@ -11,8 +11,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/fishedee/encoding"
-	"github.com/fishedee/language"
+	"github.com/milkbobo/fishgoweb/encoding"
+	"github.com/milkbobo/fishgoweb/language"
 )
 
 type ContextSerializeRequest struct {

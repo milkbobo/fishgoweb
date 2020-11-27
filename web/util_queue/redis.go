@@ -1,7 +1,7 @@
 package util_queue
 
 import (
-	. "github.com/fishedee/util"
+	. "github.com/milkbobo/fishgoweb/util"
 	"github.com/garyburd/redigo/redis"
 	"strconv"
 	"strings"

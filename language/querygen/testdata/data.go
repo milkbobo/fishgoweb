@@ -1,7 +1,7 @@
 package testdata
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"time"
 )
 

@@ -1,8 +1,8 @@
 package main
 
 import (
-	. "github.com/fishedee/encoding"
-	"github.com/fishedee/web"
+	. "github.com/milkbobo/fishgoweb/encoding"
+	"github.com/milkbobo/fishgoweb/web"
 	"net/http"
 	_ "net/http/pprof"
 	"time"

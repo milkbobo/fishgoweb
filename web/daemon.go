@@ -1,7 +1,7 @@
 package web
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"reflect"
 )
 

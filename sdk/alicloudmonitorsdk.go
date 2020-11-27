@@ -3,7 +3,7 @@ package sdk
 import (
 	"encoding/json"
 	"fmt"
-	. "github.com/fishedee/util"
+	. "github.com/milkbobo/fishgoweb/util"
 	"sync"
 	"time"
 )

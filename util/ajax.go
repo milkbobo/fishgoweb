@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	. "github.com/fishedee/encoding"
+	. "github.com/milkbobo/fishgoweb/encoding"
 	"io"
 	"io/ioutil"
 	"mime/multipart"

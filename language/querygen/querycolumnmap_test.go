@@ -1,9 +1,9 @@
 package main
 
 import (
-	. "github.com/fishedee/assert"
-	. "github.com/fishedee/language"
-	. "github.com/fishedee/language/querygen/testdata"
+	. "github.com/milkbobo/fishgoweb/assert"
+	. "github.com/milkbobo/fishgoweb/language"
+	. "github.com/milkbobo/fishgoweb/language/querygen/testdata"
 	"math/rand"
 	"testing"
 )

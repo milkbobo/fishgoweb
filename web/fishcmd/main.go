@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/fishedee/web/fishcmd/command"
+	"github.com/milkbobo/fishgoweb/web/fishcmd/command"
 	"os"
 )
 

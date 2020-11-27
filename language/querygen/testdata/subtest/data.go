@@ -1,7 +1,7 @@
 package subtest
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 )
 
 type Address struct {

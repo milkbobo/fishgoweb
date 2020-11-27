@@ -11,7 +11,7 @@ import (
 /*
 * 为什么不直接用decimal包，因为decimal包原始格式无法序列化，转储只能用string，才能在数据库和前端进行无损的传递，常见的javascript就处理不了[64位长整数](https://www.zhihu.com/question/34564427)
 * 详情看[这里](https://fishedee.com/2016/03/16/mysql%E7%BB%8F%E9%AA%8C%E6%B1%87%E6%80%BB/)的浮点数章节
-* 本目录下的math.go的实现是错误的，将decimal包直接用float64转储会[爆炸](https://github.com/fishedee/Demo/blob/master/go/decimal/main.go)
+* 本目录下的math.go的实现是错误的，将decimal包直接用float64转储会[爆炸](https://github.com/milkbobo/fishgoweb/Demo/blob/master/go/decimal/main.go)
  */
 type Decimal string
 

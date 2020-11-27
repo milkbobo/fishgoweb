@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"crypto/sha1"
 	"encoding/hex"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"go/constant"
 	"go/types"
 	"html/template"
@@ -349,7 +349,7 @@ func getLessCompareCode(line string, name1 string, extractFieldName1 string, nam
 				"} else if " + name1 + extractFieldName1 + ".After(" + name2 + extractFieldName2 + "){\n" +
 				"return " + lessFalseCode + "\n" +
 				"}\n"
-		} else if isNamed && tNamed.String() == "github.com/fishedee/language.Decimal" {
+		} else if isNamed && tNamed.String() == "github.com/milkbobo/fishgoweb/language.Decimal" {
 			return "{ \n" +
 				" tempDecimalCmp := " + name1 + extractFieldName1 + ".Cmp(" + name2 + extractFieldName2 + ")\n" +
 				"if tempDecimalCmp < 0 {\n" +

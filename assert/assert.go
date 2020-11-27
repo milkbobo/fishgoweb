@@ -2,7 +2,7 @@ package assert
 
 import (
 	"fmt"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"path"
 	"runtime"
 	"strconv"

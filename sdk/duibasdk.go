@@ -6,9 +6,9 @@ import (
 	"net/url"
 	"time"
 
-	. "github.com/fishedee/crypto"
-	. "github.com/fishedee/encoding"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/crypto"
+	. "github.com/milkbobo/fishgoweb/encoding"
+	. "github.com/milkbobo/fishgoweb/language"
 )
 
 type DuibaSdk struct {

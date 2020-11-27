@@ -1,8 +1,8 @@
 package web
 
 import (
-	"github.com/fishedee/app/router"
-	"github.com/fishedee/language"
+	"github.com/milkbobo/fishgoweb/app/router"
+	"github.com/milkbobo/fishgoweb/language"
 	"net/http"
 	"reflect"
 	"strings"

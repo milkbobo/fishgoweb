@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	. "github.com/fishedee/web"
+	. "github.com/milkbobo/fishgoweb/web"
 	"strconv"
 )
 

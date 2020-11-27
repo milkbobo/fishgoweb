@@ -1,7 +1,7 @@
 package sdk
 
 import (
-	. "github.com/fishedee/assert"
+	. "github.com/milkbobo/fishgoweb/assert"
 	"testing"
 )
 

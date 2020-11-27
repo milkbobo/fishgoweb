@@ -1,7 +1,7 @@
 package assert
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"testing"
 )
 

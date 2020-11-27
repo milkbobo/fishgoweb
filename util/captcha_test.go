@@ -1,8 +1,8 @@
 package util
 
 import (
-	. "github.com/fishedee/assert"
-	. "github.com/fishedee/crypto"
+	. "github.com/milkbobo/fishgoweb/assert"
+	. "github.com/milkbobo/fishgoweb/crypto"
 	// "reflect"
 	"testing"
 )

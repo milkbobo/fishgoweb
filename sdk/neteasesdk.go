@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/fishedee/crypto"
-	"github.com/fishedee/encoding"
-	"github.com/fishedee/util"
+	"github.com/milkbobo/fishgoweb/crypto"
+	"github.com/milkbobo/fishgoweb/encoding"
+	"github.com/milkbobo/fishgoweb/util"
 )
 
 type NetEaseSdk struct {

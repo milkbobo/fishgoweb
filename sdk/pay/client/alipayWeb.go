@@ -8,7 +8,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"github.com/fishedee/sdk/pay/common"
+	"github.com/milkbobo/fishgoweb/sdk/pay/common"
 	"net/url"
 	"sort"
 	"strings"

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/facebookgo/grace/gracenet"
 	"github.com/facebookgo/httpdown"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"net/http"
 	"os"
 	"os/signal"

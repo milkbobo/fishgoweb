@@ -1,8 +1,8 @@
 package test
 
 import (
-	. "github.com/fishedee/web"
-	"github.com/fishedee/web/test/models/number"
+	. "github.com/milkbobo/fishgoweb/web"
+	"github.com/milkbobo/fishgoweb/web/test/models/number"
 )
 
 type InnerTest struct {

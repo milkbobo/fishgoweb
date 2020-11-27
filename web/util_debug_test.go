@@ -2,7 +2,7 @@ package web
 
 import (
 	"fmt"
-	. "github.com/fishedee/assert"
+	. "github.com/milkbobo/fishgoweb/assert"
 	"testing"
 )
 

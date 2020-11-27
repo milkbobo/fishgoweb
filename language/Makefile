@@ -2,9 +2,9 @@
 test_all:test_reflect test_macro 
 	echo "test finish"
 test_macro:
-	go install github.com/fishedee/language/querygen
+	go install github.com/milkbobo/fishgoweb/language/querygen
 	rm -rf testdata/testdata_querygen.go
-	querygen -r github.com/fishedee/language/testdata
+	querygen -r github.com/milkbobo/fishgoweb/language/testdata
 	go test . -v -args macro
 test_reflect:
 	rm -rf testdata/testdata_querygen.go

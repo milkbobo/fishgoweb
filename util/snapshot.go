@@ -54,7 +54,7 @@ func (this *Browser) Snapshot(url, path string) error {
 		"/usr/local/casperjs/1.1.3/package/bin/casperjs",
 		"--ssl-protocol=any",
 		"--ignore-ssl-errors=true",
-		"/var/www/fishgo/src/github.com/fishedee/util/scripts/snapshot.js",
+		"/var/www/fishgo/src/github.com/milkbobo/fishgoweb/util/scripts/snapshot.js",
 		"--width="+strconv.Itoa(this.viewPort.width),
 		"--height="+strconv.Itoa(this.viewPort.height),
 		"--useragent="+this.userAgent,

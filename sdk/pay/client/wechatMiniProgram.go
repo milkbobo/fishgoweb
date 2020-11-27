@@ -3,9 +3,9 @@ package client
 import (
 	"errors"
 	"fmt"
-	. "github.com/fishedee/language"
-	"github.com/fishedee/sdk/pay/common"
-	"github.com/fishedee/sdk/pay/util"
+	. "github.com/milkbobo/fishgoweb/language"
+	"github.com/milkbobo/fishgoweb/sdk/pay/common"
+	"github.com/milkbobo/fishgoweb/sdk/pay/util"
 	"time"
 )
 

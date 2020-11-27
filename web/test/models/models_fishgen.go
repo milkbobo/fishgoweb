@@ -1,7 +1,7 @@
 package test
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 )
 
 func (this *ClientLoginAoModel) IsLogin_WithError() (_fishgen1 bool, _fishgenErr Exception) {

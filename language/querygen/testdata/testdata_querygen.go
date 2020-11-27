@@ -1,8 +1,8 @@
 package testdata
 
 import (
-	"github.com/fishedee/language"
-	"github.com/fishedee/language/querygen/testdata/subtest"
+	"github.com/milkbobo/fishgoweb/language"
+	"github.com/milkbobo/fishgoweb/language/querygen/testdata/subtest"
 	"time"
 )
 

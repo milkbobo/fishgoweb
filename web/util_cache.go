@@ -5,7 +5,7 @@ import (
 	"errors"
 	"github.com/astaxie/beego/cache"
 	_ "github.com/astaxie/beego/cache/redis"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"strconv"
 	"strings"
 	"time"

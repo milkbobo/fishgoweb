@@ -1,7 +1,7 @@
 package main
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"go/constant"
 	"go/types"
 	"html/template"
@@ -181,8 +181,8 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	registerQueryGen("github.com/fishedee/language.QueryJoin", QueryJoinGen)
-	registerQueryGen("github.com/fishedee/language.QueryLeftJoin", func(request queryGenRequest) *queryGenResponse {
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryJoin", QueryJoinGen)
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryLeftJoin", func(request queryGenRequest) *queryGenResponse {
 		thridParty := types.TypeAndValue{
 			Type:  nil,
 			Value: constant.MakeString("left"),
@@ -194,7 +194,7 @@ func init() {
 		request.args = newArgs
 		return QueryJoinGen(request)
 	})
-	registerQueryGen("github.com/fishedee/language.QueryRightJoin", func(request queryGenRequest) *queryGenResponse {
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryRightJoin", func(request queryGenRequest) *queryGenResponse {
 		thridParty := types.TypeAndValue{
 			Type:  nil,
 			Value: constant.MakeString("right"),
@@ -206,7 +206,7 @@ func init() {
 		request.args = newArgs
 		return QueryJoinGen(request)
 	})
-	registerQueryGen("github.com/fishedee/language.QueryInnerJoin", func(request queryGenRequest) *queryGenResponse {
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryInnerJoin", func(request queryGenRequest) *queryGenResponse {
 		thridParty := types.TypeAndValue{
 			Type:  nil,
 			Value: constant.MakeString("inner"),
@@ -218,7 +218,7 @@ func init() {
 		request.args = newArgs
 		return QueryJoinGen(request)
 	})
-	registerQueryGen("github.com/fishedee/language.QueryOuterJoin", func(request queryGenRequest) *queryGenResponse {
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryOuterJoin", func(request queryGenRequest) *queryGenResponse {
 		thridParty := types.TypeAndValue{
 			Type:  nil,
 			Value: constant.MakeString("outer"),

@@ -2,8 +2,8 @@ package sdk
 
 import (
 	"fmt"
-	. "github.com/fishedee/encoding"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/encoding"
+	. "github.com/milkbobo/fishgoweb/language"
 	"io/ioutil"
 	"net/http"
 	"path"

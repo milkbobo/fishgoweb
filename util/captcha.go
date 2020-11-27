@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"github.com/dchest/captcha"
-	. "github.com/fishedee/encoding"
+	. "github.com/milkbobo/fishgoweb/encoding"
 )
 
 type Captcha struct {

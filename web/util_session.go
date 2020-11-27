@@ -3,7 +3,7 @@ package web
 import (
 	"encoding/json"
 	"github.com/astaxie/beego/session"
-	_ "github.com/fishedee/web/util_session"
+	_ "github.com/milkbobo/fishgoweb/web/util_session"
 	"net/http"
 	"net/url"
 	"strconv"

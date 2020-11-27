@@ -2,7 +2,7 @@ package util
 
 import (
 	"errors"
-	"github.com/fishedee/language"
+	"github.com/milkbobo/fishgoweb/language"
 	"os"
 	"reflect"
 	"sync"

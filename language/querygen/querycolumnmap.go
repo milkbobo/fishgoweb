@@ -91,6 +91,6 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	registerQueryGen("github.com/fishedee/language.QueryColumnMap", QueryColumnMapGen)
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryColumnMap", QueryColumnMapGen)
 	hasQueryColumnMapGenerate = map[string]bool{}
 }

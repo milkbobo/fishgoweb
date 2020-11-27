@@ -144,7 +144,7 @@ func generateSingleFileImport(data []ParserInfo, source string) (string, error) 
 	nameImport := map[string]ImportInfo{}
 	nameImport["Exception"] = ImportInfo{
 		name: ".",
-		path: "github.com/fishedee/language",
+		path: "github.com/milkbobo/fishgoweb/language",
 	}
 	osGoPath := strings.Split(os.Getenv("GOPATH"), ":")
 	for _, singleGoPath := range osGoPath {
@@ -255,7 +255,7 @@ func generateSingleTestFileContent(data []ParserInfo) (string, error) {
 	packageImport := `
 		import (
 			"testing"
-			. "github.com/fishedee/web"
+			. "github.com/milkbobo/fishgoweb/web"
 		)`
 	packageFunc := "\ntype testFishGenStruct struct{}\n" +
 		"func Test" + strings.ToUpper(packageName[0:1]) + packageName[1:] + "(t *testing.T){\n" +

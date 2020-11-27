@@ -2,7 +2,7 @@ package sdk
 
 import (
 	"errors"
-	. "github.com/fishedee/util"
+	. "github.com/milkbobo/fishgoweb/util"
 	"net"
 	"regexp"
 	"sync"

@@ -1,7 +1,7 @@
 package main
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"html/template"
 )
 
@@ -90,6 +90,6 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	registerQueryGen("github.com/fishedee/language.QueryWhere", QueryWhereGen)
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QueryWhere", QueryWhereGen)
 	hasQueryWhereGenerate = map[string]bool{}
 }

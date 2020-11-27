@@ -1,7 +1,7 @@
 package number
 
 import (
-	. "github.com/fishedee/web"
+	. "github.com/milkbobo/fishgoweb/web"
 )
 
 type NumberAoModel struct {

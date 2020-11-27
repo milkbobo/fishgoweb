@@ -1,7 +1,7 @@
 package language_test
 
 import (
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 	"reflect"
 	"testing"
 )

@@ -6,10 +6,10 @@ import (
 	"reflect"
 	"strconv"
 
-	. "github.com/fishedee/encoding"
-	. "github.com/fishedee/language"
-	. "github.com/fishedee/util"
-	. "github.com/fishedee/web/util_queue"
+	. "github.com/milkbobo/fishgoweb/encoding"
+	. "github.com/milkbobo/fishgoweb/language"
+	. "github.com/milkbobo/fishgoweb/util"
+	. "github.com/milkbobo/fishgoweb/web/util_queue"
 )
 
 type Queue interface {

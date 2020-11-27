@@ -3,10 +3,10 @@ package sdk
 import (
 	"errors"
 	"fmt"
-	. "github.com/fishedee/crypto"
-	. "github.com/fishedee/encoding"
-	. "github.com/fishedee/language"
-	. "github.com/fishedee/util"
+	. "github.com/milkbobo/fishgoweb/crypto"
+	. "github.com/milkbobo/fishgoweb/encoding"
+	. "github.com/milkbobo/fishgoweb/language"
+	. "github.com/milkbobo/fishgoweb/util"
 	"net/url"
 	"time"
 )

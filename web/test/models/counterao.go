@@ -1,7 +1,7 @@
 package test
 
 import (
-	. "github.com/fishedee/web"
+	. "github.com/milkbobo/fishgoweb/web"
 	"sync/atomic"
 )
 

@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	. "github.com/fishedee/app/macro"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/app/macro"
+	. "github.com/milkbobo/fishgoweb/language"
 	"go/ast"
 	"go/format"
 	"go/token"
@@ -26,7 +26,7 @@ func usage() {
 	fmt.Fprintf(os.Stderr, "\tlarge improve performance language/query.go function \n")
 	fmt.Fprintf(os.Stderr, "\tquerygen [flags] [packageName]\n")
 	fmt.Fprintf(os.Stderr, "For more information, see:\n")
-	fmt.Fprintf(os.Stderr, "\thttps://github.com/fishedee/fishgo/tree/master/src/github.com/fishedee/language/querygen\n")
+	fmt.Fprintf(os.Stderr, "\thttps://github.com/milkbobo/fishgoweb/fishgo/tree/master/src/github.com/milkbobo/fishgoweb/language/querygen\n")
 	fmt.Fprintf(os.Stderr, "Flags:\n")
 	flag.PrintDefaults()
 }
@@ -86,7 +86,7 @@ func generate(packageName string, packagePath string, packages []queryGenRespons
 			importPackageMap[singleImport] = true
 		}
 	}
-	importPackageMap["github.com/fishedee/language"] = true
+	importPackageMap["github.com/milkbobo/fishgoweb/language"] = true
 	delete(importPackageMap, packagePath)
 	importPackageList := []string{}
 	for singlePackage, _ := range importPackageMap {

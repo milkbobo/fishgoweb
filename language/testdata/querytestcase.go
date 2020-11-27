@@ -3,7 +3,7 @@ package testdata
 import (
 	"time"
 
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 )
 
 // TestCase 测试用例

@@ -1,7 +1,7 @@
 package web
 
 import (
-	. "github.com/fishedee/web"
+	. "github.com/milkbobo/fishgoweb/web"
 	"reflect"
 	"testing"
 	"time"

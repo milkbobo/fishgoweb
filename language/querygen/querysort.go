@@ -80,6 +80,6 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	registerQueryGen("github.com/fishedee/language.QuerySort", QuerySortGen)
+	registerQueryGen("github.com/milkbobo/fishgoweb/language.QuerySort", QuerySortGen)
 	hasQuerySortGenerate = map[string]bool{}
 }

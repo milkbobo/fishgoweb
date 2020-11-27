@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	. "github.com/fishedee/encoding"
-	. "github.com/fishedee/util"
+	. "github.com/milkbobo/fishgoweb/encoding"
+	. "github.com/milkbobo/fishgoweb/util"
 )
 
 type UmengSdk struct {

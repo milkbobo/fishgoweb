@@ -2,8 +2,8 @@ package web
 
 import (
 	"errors"
-	. "github.com/fishedee/language"
-	. "github.com/fishedee/util"
+	. "github.com/milkbobo/fishgoweb/language"
+	. "github.com/milkbobo/fishgoweb/util"
 	"github.com/robfig/cron"
 	"reflect"
 	"time"

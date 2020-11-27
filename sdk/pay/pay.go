@@ -2,10 +2,10 @@ package gopay
 
 import (
 	"errors"
-	"github.com/fishedee/sdk/pay/client"
-	"github.com/fishedee/sdk/pay/common"
-	"github.com/fishedee/sdk/pay/constant"
-	//"github.com/fishedee/sdk/pay/util"
+	"github.com/milkbobo/fishgoweb/sdk/pay/client"
+	"github.com/milkbobo/fishgoweb/sdk/pay/common"
+	"github.com/milkbobo/fishgoweb/sdk/pay/constant"
+	//"github.com/milkbobo/fishgoweb/sdk/pay/util"
 	//"strconv"
 )
 

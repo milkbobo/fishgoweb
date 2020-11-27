@@ -2,7 +2,7 @@ package command
 
 import (
 	"errors"
-	"github.com/fishedee/web/fishcmd/modules"
+	"github.com/milkbobo/fishgoweb/web/fishcmd/modules"
 )
 
 func Run(argv []string) (string, error) {

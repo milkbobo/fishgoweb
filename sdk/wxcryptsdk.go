@@ -13,7 +13,7 @@ import (
 	"io"
 	"math/rand"
 
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 )
 
 type WxCryptSdk struct {

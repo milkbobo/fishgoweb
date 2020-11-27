@@ -9,10 +9,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/fishedee/encoding"
-	"github.com/fishedee/sdk/pay/client"
-	"github.com/fishedee/sdk/pay/common"
-	"github.com/fishedee/sdk/pay/util"
+	"github.com/milkbobo/fishgoweb/encoding"
+	"github.com/milkbobo/fishgoweb/sdk/pay/client"
+	"github.com/milkbobo/fishgoweb/sdk/pay/common"
+	"github.com/milkbobo/fishgoweb/sdk/pay/util"
 )
 
 func AliWebCallback(w http.ResponseWriter, r *http.Request) (*common.AliWebPayResult, error) {

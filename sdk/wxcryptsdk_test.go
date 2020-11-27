@@ -3,7 +3,7 @@ package sdk
 import (
 	"encoding/xml"
 	"fmt"
-	. "github.com/fishedee/assert"
+	. "github.com/milkbobo/fishgoweb/assert"
 	"testing"
 )
 

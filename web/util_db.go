@@ -2,7 +2,6 @@ package web
 
 import (
 	"database/sql"
-	"errors"
 	"fmt"
 	"reflect"
 	"strconv"
@@ -10,17 +9,17 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/go-xorm/core"
-	"github.com/go-xorm/xorm"
+	"xorm.io/core"
+	"xorm.io/xorm"
 )
 
 type DatabaseCommon interface {
-	Sql(querystring string, args ...interface{}) DatabaseSession
+	SQL(querystring string, args ...interface{}) DatabaseSession
 	NoAutoTime() DatabaseSession
 	NoAutoCondition(no ...bool) DatabaseSession
 	Cascade(trueOrFalse ...bool) DatabaseSession
 	Where(querystring string, args ...interface{}) DatabaseSession
-	Id(id interface{}) DatabaseSession
+	ID(id interface{}) DatabaseSession
 	Distinct(columns ...string) DatabaseSession
 	Select(str string) DatabaseSession
 	Cols(columns ...string) DatabaseSession
@@ -42,7 +41,7 @@ type DatabaseCommon interface {
 	Join(join_operator string, tablename interface{}, condition string, args ...interface{}) DatabaseSession
 	GroupBy(keys string) DatabaseSession
 	Having(conditions string) DatabaseSession
-	Exec(sql string, args ...interface{}) (sql.Result, error)
+	Exec(args ...interface{}) (sql.Result, error)
 	Query(sql string, paramStr ...interface{}) (resultsSlice []map[string][]byte, err error)
 	Insert(beans ...interface{}) (int64, error)
 	InsertOne(bean interface{}) (int64, error)
@@ -50,12 +49,12 @@ type DatabaseCommon interface {
 	Delete(bean interface{}) (int64, error)
 	Get(bean interface{}) (bool, error)
 	Find(beans interface{}, condiBeans ...interface{}) error
-	Count(bean interface{}) (int64, error)
+	Count(bean ...interface{}) (int64, error)
 }
 
 type DatabaseSession interface {
 	DatabaseCommon
-	Close()
+	Close() error
 	And(querystring string, args ...interface{}) DatabaseSession
 	Or(querystring string, args ...interface{}) DatabaseSession
 	ForUpdate() DatabaseSession
@@ -68,7 +67,6 @@ type Database interface {
 	DatabaseCommon
 	Close() error
 	NewSession() DatabaseSession
-	UpdateBatch(rowsSlicePtr interface{}, indexColName string) (int64, error)
 	GetStats() sql.DBStats
 }
 
@@ -259,7 +257,7 @@ func (this *databaseImplement) autoMapType(v reflect.Value) *core.Table {
 			}
 		}
 		if table.Name == "" {
-			table.Name = this.TableMapper.Obj2Table(t.Name())
+			table.Name = this.GetTableMapper().Obj2Table(t.Name())
 		}
 	}
 	table.Type = t
@@ -270,8 +268,8 @@ func (this *databaseImplement) autoMapType(v reflect.Value) *core.Table {
 			continue
 		}
 		col := &core.Column{FieldName: t.Field(i).Name, Nullable: true, IsPrimaryKey: false,
-			IsAutoIncrement: false, MapType: core.TWOSIDES, Indexes: make(map[string]bool)}
-		col.Name = this.ColumnMapper.Obj2Table(t.Field(i).Name)
+			IsAutoIncrement: false, MapType: core.TWOSIDES, Indexes: make(map[string]int)}
+		col.Name = this.GetTableMapper().Obj2Table(t.Field(i).Name)
 		table.AddColumn(col)
 	}
 	return table
@@ -285,8 +283,8 @@ func (this *databaseImplement) NewSession() DatabaseSession {
 	return newDatabaseSession(this.Engine.NewSession())
 }
 
-func (this *databaseImplement) Sql(querystring string, args ...interface{}) DatabaseSession {
-	return newDatabaseSession(this.Engine.Sql(querystring, args...))
+func (this *databaseImplement) SQL(querystring string, args ...interface{}) DatabaseSession {
+	return newDatabaseSession(this.Engine.SQL(querystring, args...))
 }
 
 func (this *databaseImplement) NoAutoTime() DatabaseSession {
@@ -305,8 +303,8 @@ func (this *databaseImplement) Where(querystring string, args ...interface{}) Da
 	return newDatabaseSession(this.Engine.Where(querystring, args...))
 }
 
-func (this *databaseImplement) Id(id interface{}) DatabaseSession {
-	return newDatabaseSession(this.Engine.Id(id))
+func (this *databaseImplement) ID(id interface{}) DatabaseSession {
+	return newDatabaseSession(this.Engine.ID(id))
 }
 
 func (this *databaseImplement) Distinct(columns ...string) DatabaseSession {
@@ -397,126 +395,6 @@ func (this *databaseImplement) Having(conditions string) DatabaseSession {
 	return newDatabaseSession(this.Engine.Having(conditions))
 }
 
-func (this *databaseImplement) UpdateBatch(rowsSlicePtr interface{}, indexColName string) (int64, error) {
-	sliceValue := reflect.Indirect(reflect.ValueOf(rowsSlicePtr))
-	if sliceValue.Kind() != reflect.Slice {
-		return 0, errors.New("needs a pointer to a slice")
-	}
-	if sliceValue.Len() == 0 {
-		return 0, errors.New("update rows is empty")
-	}
-
-	bean := sliceValue.Index(0).Interface()
-	elementValue := this.rValue(bean)
-	table := this.autoMapType(elementValue)
-	size := sliceValue.Len()
-
-	var rows = make([][]interface{}, 0)
-	var indexRow = make([]interface{}, 0)
-	cols := make([]*core.Column, 0)
-	updateCols := make([]bool, 0)
-	var indexCol *core.Column
-
-	//提取字段
-	for i := 0; i < size; i++ {
-		v := sliceValue.Index(i)
-		vv := reflect.Indirect(v)
-
-		//处理需要的update的列
-		if i == 0 {
-			for _, col := range table.Columns() {
-				if col.Name == indexColName {
-					indexCol = col
-				} else {
-					cols = append(cols, col)
-					updateCols = append(updateCols, false)
-				}
-			}
-			if indexCol == nil {
-				return 0, errors.New("counld not found index col " + indexColName)
-			}
-		}
-
-		//处理需要的update的值
-		var singleRow = make([]interface{}, 0)
-		for colIndex, col := range cols {
-			ptrFieldValue, err := col.ValueOfV(&vv)
-			if err != nil {
-				return 0, err
-			}
-			fieldValue := *ptrFieldValue
-			var arg interface{}
-			if this.isZero(fieldValue.Interface()) {
-				arg = nil
-			} else {
-				var err error
-				arg, err = this.value2Interface(fieldValue)
-				if err != nil {
-					return 0, err
-				}
-				updateCols[colIndex] = true
-			}
-			singleRow = append(singleRow, arg)
-		}
-		rows = append(rows, singleRow)
-		ptrFieldValue, err := indexCol.ValueOfV(&vv)
-		if err != nil {
-			return 0, err
-		}
-		fieldValue := *ptrFieldValue
-		arg, err := this.value2Interface(fieldValue)
-		if err != nil {
-			return 0, err
-		}
-		indexRow = append(indexRow, arg)
-	}
-	if len(cols) == 0 {
-		return 0, errors.New("update cols is empty! " + fmt.Sprintf("%v", rowsSlicePtr))
-	}
-
-	//拼接sql
-	var sqlArgs = make([]interface{}, 0)
-	var sql = "UPDATE " + table.Name + " SET "
-	var isFirstUpdateCol = true
-	for colIndex, col := range cols {
-		if updateCols[colIndex] == false {
-			continue
-		}
-		if isFirstUpdateCol == false {
-			sql += " , "
-		}
-		sql += this.Engine.QuoteStr() + col.Name + this.Engine.QuoteStr()
-		sql += " = CASE "
-		sql += this.Engine.QuoteStr() + indexCol.Name + this.Engine.QuoteStr()
-		for rowIndex, row := range rows {
-			if row[colIndex] == nil {
-				continue
-			}
-			sql += " WHEN ? THEN ? "
-			sqlArgs = append(sqlArgs, indexRow[rowIndex])
-			sqlArgs = append(sqlArgs, row[colIndex])
-		}
-		sql += " END "
-		isFirstUpdateCol = false
-	}
-	sql += " WHERE " + this.Engine.QuoteStr() + indexCol.Name + this.Engine.QuoteStr() + " IN ( "
-	for rowIndex, row := range indexRow {
-		if rowIndex != 0 {
-			sql += " , "
-		}
-		sql += " ? "
-		sqlArgs = append(sqlArgs, row)
-	}
-	sql += " ) "
-
-	//执行sql
-	res, err := this.Exec(sql, sqlArgs...)
-	if err != nil {
-		return 0, err
-	}
-	return res.RowsAffected()
-}
-
 type tableMapper struct {
 }
 
@@ -550,8 +428,8 @@ func (this *columnMapper) Table2Obj(in string) string {
 	return in
 }
 
-func (this *databaseSessionImplement) Sql(querystring string, args ...interface{}) DatabaseSession {
-	return newDatabaseSession(this.Session.Sql(querystring, args...))
+func (this *databaseSessionImplement) SQL(querystring string, args ...interface{}) DatabaseSession {
+	return newDatabaseSession(this.Session.SQL(querystring, args...))
 }
 
 func (this *databaseSessionImplement) NoAutoTime() DatabaseSession {
@@ -570,8 +448,8 @@ func (this *databaseSessionImplement) Where(querystring string, args ...interfac
 	return newDatabaseSession(this.Session.Where(querystring, args...))
 }
 
-func (this *databaseSessionImplement) Id(id interface{}) DatabaseSession {
-	return newDatabaseSession(this.Session.Id(id))
+func (this *databaseSessionImplement) ID(id interface{}) DatabaseSession {
+	return newDatabaseSession(this.Session.ID(id))
 }
 
 func (this *databaseSessionImplement) Distinct(columns ...string) DatabaseSession {
@@ -672,4 +550,8 @@ func (this *databaseSessionImplement) Or(querystring string, args ...interface{}
 
 func (this *databaseSessionImplement) ForUpdate() DatabaseSession {
 	return newDatabaseSession(this.Session.ForUpdate())
+}
+
+func (this *databaseSessionImplement) Exec() DatabaseSession {
+	return newDatabaseSession(this.Session.Exec(args...))
 }

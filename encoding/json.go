@@ -3,7 +3,7 @@ package encoding
 import (
 	"bytes"
 	"encoding/json"
-	. "github.com/fishedee/language"
+	. "github.com/milkbobo/fishgoweb/language"
 )
 
 func EncodeJson(data interface{}) ([]byte, error) {

@@ -17,9 +17,9 @@ import (
 	"strings"
 	"time"
 
-	. "github.com/fishedee/encoding"
-	. "github.com/fishedee/language"
-	. "github.com/fishedee/util"
+	. "github.com/milkbobo/fishgoweb/encoding"
+	. "github.com/milkbobo/fishgoweb/language"
+	. "github.com/milkbobo/fishgoweb/util"
 )
 
 type WxSdk struct {
