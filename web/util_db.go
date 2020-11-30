@@ -552,6 +552,6 @@ func (this *databaseSessionImplement) ForUpdate() DatabaseSession {
 	return newDatabaseSession(this.Session.ForUpdate())
 }
 
-func (this *databaseSessionImplement) Exec() DatabaseSession {
+func (this *databaseSessionImplement) Exec(args ...interface{}) DatabaseSession {
 	return newDatabaseSession(this.Session.Exec(args...))
 }
