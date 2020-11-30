@@ -551,7 +551,3 @@ func (this *databaseSessionImplement) Or(querystring string, args ...interface{}
 func (this *databaseSessionImplement) ForUpdate() DatabaseSession {
 	return newDatabaseSession(this.Session.ForUpdate())
 }
-
-func (this *databaseSessionImplement) Exec(args ...interface{}) DatabaseSession {
-	return newDatabaseSession(this.Session.Exec(args...))
-}
