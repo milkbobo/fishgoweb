@@ -41,7 +41,7 @@ type DatabaseCommon interface {
 	Join(join_operator string, tablename interface{}, condition string, args ...interface{}) DatabaseSession
 	GroupBy(keys string) DatabaseSession
 	Having(conditions string) DatabaseSession
-	Exec(args ...interface{}) (sql.Result, error)
+	Exec(args ...interface{}) DatabaseSession
 	Query(sql string, paramStr ...interface{}) (resultsSlice []map[string][]byte, err error)
 	Insert(beans ...interface{}) (int64, error)
 	InsertOne(bean interface{}) (int64, error)
