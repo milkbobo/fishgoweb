@@ -1,7 +1,6 @@
 package web
 
 import (
-	"encoding/json"
 	"github.com/astaxie/beego/session"
 	_ "github.com/milkbobo/fishgoweb/web/util_session"
 	"net/http"
@@ -61,12 +60,20 @@ func NewSession(config SessionConfig) (Session, error) {
 	if config.GcLifeTime == 0 {
 		config.GcLifeTime = 3600
 	}
-	result, err := json.Marshal(config)
-	if err != nil {
-		return nil, err
-	}
 
-	sessionManager, err := session.NewManager(config.Driver, string(result))
+	cf := new(session.ManagerConfig)
+	cf.Domain = config.Domain
+	cf.SessionIDLength = int64(config.SessionIdLength)
+	cf.CookieLifeTime = config.CookieLifeTime
+	cf.ProviderConfig = config.ProviderConfig
+	cf.Secure = config.Secure
+	cf.Gclifetime = int64(config.GcLifeTime)
+	cf.EnableSetCookie = config.EnableSetCookie
+	cf.CookieName = strconv.Itoa(config.CookieLifeTime)
+	cf.CookieLifeTime = config.CookieLifeTime
+	cf.Gclifetime = int64(config.GcLifeTime)
+
+	sessionManager, err := session.NewManager(config.Driver, cf)
 	if err != nil {
 		return nil, err
 	}
