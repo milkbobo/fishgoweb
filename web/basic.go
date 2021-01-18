@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"testing"
 	"time"
+
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type Basic struct {
@@ -18,6 +20,11 @@ type Basic struct {
 	DB3      Database
 	DB4      Database
 	DB5      Database
+	MDB      *mongo.Database
+	MDB2     *mongo.Database
+	MDB3     *mongo.Database
+	MDB4     *mongo.Database
+	MDB5     *mongo.Database
 	Log      Log
 	Monitor  Monitor
 	Timer    Timer
@@ -72,6 +79,26 @@ func init() {
 		panic(err)
 	}
 	globalBasic.DB5, err = NewDatabaseFromConfig("db5")
+	if err != nil {
+		panic(err)
+	}
+	globalBasic.MDB, err = NewMongoDatabaseFromConfig("mdb")
+	if err != nil {
+		panic(err)
+	}
+	globalBasic.MDB2, err = NewMongoDatabaseFromConfig("mdb2")
+	if err != nil {
+		panic(err)
+	}
+	globalBasic.MDB3, err = NewMongoDatabaseFromConfig("mdb3")
+	if err != nil {
+		panic(err)
+	}
+	globalBasic.MDB4, err = NewMongoDatabaseFromConfig("mdb4")
+	if err != nil {
+		panic(err)
+	}
+	globalBasic.MDB5, err = NewMongoDatabaseFromConfig("mdb5")
 	if err != nil {
 		panic(err)
 	}
