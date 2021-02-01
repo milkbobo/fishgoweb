@@ -70,8 +70,7 @@ func NewSession(config SessionConfig) (Session, error) {
 	cf.Secure = config.Secure
 	cf.Gclifetime = int64(config.GcLifeTime)
 	cf.EnableSetCookie = config.EnableSetCookie
-	cf.CookieName = strconv.Itoa(config.CookieLifeTime)
-	cf.CookieLifeTime = config.CookieLifeTime
+	cf.CookieName = config.CookieName
 	cf.Gclifetime = int64(config.GcLifeTime)
 
 	sessionManager, err := session.NewManager(config.Driver, cf)
