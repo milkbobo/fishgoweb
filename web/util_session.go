@@ -2,6 +2,7 @@ package web
 
 import (
 	"github.com/astaxie/beego/session"
+  "github.com/astaxie/beego/session/redis"
 	_ "github.com/milkbobo/fishgoweb/web/util_session"
 	"net/http"
 	"net/url"
