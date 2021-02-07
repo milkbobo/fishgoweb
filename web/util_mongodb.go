@@ -26,7 +26,7 @@ func NewMongoDatabase(config MongoDbDatabaseConfig) (*mongo.Database, error) {
 		return nil, nil
 	}
 	dblink := fmt.Sprintf(
-		"mongodb://%s:%s@%s:%d/?authSource=admin&authMechanism=SCRAM-SHA-256",
+		"mongodb://%s:%s@%s:%d/",
 		config.User,
 		config.Passowrd,
 		config.Host,
